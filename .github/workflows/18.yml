@@ -41,5 +41,7 @@ jobs:
         git commit -am "${{ steps.date.outputs.date }}"
         git branch -D main
         git branch -m main
-
+        
+    - name: Push
+      run: git push -f origin main
 
