@@ -30,7 +30,7 @@ jobs:
         sed -i '#genre#' AdultVideo.txt
         sed -i '/^\s*$/d' AdultVideo.txt
          
-        echo "Auto Update IPTV in ${{ steps.date.outputs.date }}" > README.md
+        echo "Auto Update AdultVideo in ${{ steps.date.outputs.date }}" > README.md
 
     - name: Clean
       run: |
