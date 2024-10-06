@@ -27,8 +27,7 @@ jobs:
 
          sed -i -n '/XXX/,+1p' AdultVideo.txt
          sed -i 's/XXX/成人频道_9527/' AdultVideo.txt
-        sed -i '#genre#' AdultVideo.txt
-        sed -i '/^\s*$/d' AdultVideo.txt
+
          
         echo "Auto Update AdultVideo in ${{ steps.date.outputs.date }}" > README.md
 
