@@ -19,7 +19,7 @@ def load_modify_name(filename):
     return corrections
 
 #读取修改字典文件
-rename_dic = load_modify_name('assets/freetv/freetv_rename.txt')
+rename_dic = load_modify_name('freetv/freetv_rename.txt')
 
 #纠错频道名称
 def rename_channel(corrections, data):
@@ -96,7 +96,7 @@ freetv_other_lines = []
 
 
 # 定义
-urls = ["https://freetv.fun/test_channels_original_new.txt"]
+urls = ["https://fanmingming.com/txt?url=http://adultiptv.net/chs.m3u"]
 
 # 处理
 for url in urls:
@@ -108,10 +108,10 @@ for url in urls:
 freetv_lines_renamed=rename_channel(rename_dic,freetv_lines)
 version=datetime.now().strftime("%Y%m%d-%H-%M-%S")+",url"
 output_lines =  ["更新时间,#genre#"] +[version] + ['\n'] +\
-             ["freetv,#genre#"] + sorted(set(freetv_lines_renamed))
+             ["freetv_9527,#genre#"] + sorted(set(freetv_lines_renamed))
 
 # 将合并后的文本写入文件：全集
-output_file = "assets/freetv/freetv_output.txt"
+output_file = "freetv/freetv_output.txt"
 try:
     with open(output_file, 'w', encoding='utf-8') as f:
         for line in output_lines:
@@ -153,9 +153,9 @@ output_lines_other =  ["更新时间,#genre#"] +[version] + ['\n'] +\
              ["freetv_other,#genre#"] + sorted(set(freetv_other_lines))
 
 # 再次写入文件：分开
-output_file_cctv = "assets/freetv/freetv_output_cctv.txt"
-output_file_ws = "assets/freetv/freetv_output_ws.txt"
-output_file_other = "assets/freetv/freetv_output_other.txt"
+output_file_cctv = "freetv/freetv_output_cctv.txt"
+output_file_ws = "freetv/freetv_output_ws.txt"
+output_file_other = "freetv/freetv_output_other.txt"
 try:
     with open(output_file_cctv, 'w', encoding='utf-8') as f:
         for line in output_lines_cctv:
