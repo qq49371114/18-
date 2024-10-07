@@ -42,9 +42,7 @@ jobs:
           git add history/freetv/"${current_datetime}_freetv_output.txt"
           git commit -m "(freetv)Archive file with timestamp"
           
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+ - name: Push
+      run: git push -f origin main
     
         
