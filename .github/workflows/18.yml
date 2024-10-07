@@ -40,9 +40,10 @@ jobs:
           current_datetime=$(date +"%Y%m%d_%H%M%S")
           cp freetv/freetv_output.txt history/freetv/"${current_datetime}_freetv_output.txt"
           git add history/freetv/"${current_datetime}_freetv_output.txt"
-    
-    
-     - name: Push
-      run: git push -f origin main
-    
+          git commit -m "(freetv)Archive file with timestamp"   
+ 
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         
