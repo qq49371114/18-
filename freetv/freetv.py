@@ -86,12 +86,10 @@ def process_url(url):
 
 
 #读取文本
-freetv_dictionary=read_txt_to_array('assets/freetv/freetvlist.txt')  #all
-freetv_dictionary_cctv=read_txt_to_array('assets/freetv/freetvlist_cctv.txt')   #二次分发cctv，单独存
-freetv_dictionary_ws=read_txt_to_array('assets/freetv/freetvlist_ws.txt')   #二次分发卫视，单独存
+freetv_dictionary=read_txt_to_array('freetv/freetvlist.txt')  #all
+freetv_dictionary_cctv=read_txt_to_array('freetv/freetvlist_cctv.txt')   #二次分发cctv，单独存
 
 freetv_cctv_lines = []
-freetv_ws_lines = []
 freetv_other_lines = []
 
 
@@ -137,24 +135,18 @@ for line in freetv_lines_renamed:
 
         if channel_name in freetv_dictionary_cctv: #央视频道
             freetv_cctv_lines.append(line.strip())
-        elif channel_name in freetv_dictionary_ws: #卫视频道
-            freetv_ws_lines.append(line.strip())
         else:
             freetv_other_lines.append(line.strip())
 
 # freetv_cctv
 output_lines_cctv =  ["更新时间,#genre#"] +[version] + ['\n'] +\
              ["freetv_cctv,#genre#"] + sorted(set(freetv_cctv_lines))
-# freetv_ws
-output_lines_ws =  ["更新时间,#genre#"] +[version] + ['\n'] +\
-             ["freetv_ws,#genre#"] + sorted(set(freetv_ws_lines))
 # freetv_other
 output_lines_other =  ["更新时间,#genre#"] +[version] + ['\n'] +\
              ["freetv_other,#genre#"] + sorted(set(freetv_other_lines))
 
 # 再次写入文件：分开
 output_file_cctv = "freetv/freetv_output_cctv.txt"
-output_file_ws = "freetv/freetv_output_ws.txt"
 output_file_other = "freetv/freetv_output_other.txt"
 try:
     with open(output_file_cctv, 'w', encoding='utf-8') as f:
